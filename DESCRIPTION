@@ -1,0 +1,18 @@
+Package: insee.admin.data.2022
+Title: Data Package for INSEE Administrative Segmentation, millesime 2022
+Version: 0.0.0.9000
+Authors@R: 
+    person("Alexis", "Bourgeois", , "acidybee@proton.me", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0009-8513-1715"))
+Description: Data package for INSEE Administrative Segmentation, millesime 2022. Combine Semantic & Spatial data from INSEE at various
+    administrative scales.
+License: MIT + file LICENSE
+Imports: 
+    magrittr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: 
+    R (>= 3.5)
+LazyData: true
+LazyDataCompression: bzip2

@@ -1,0 +1,86 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# insee.admin.data.2022
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of `insee.admin.data.2022` is to provide ready-to-use datasets for French administrative segmentation (millesime 2022), combining semantic and spatial data from INSEE at various administrative scales.
+
+## Installation
+
+This package is not available on CRAN. You can install the development version from GitHub:
+
+``` r
+remotes::install_github("AcidyBee/insee.admin.data.2022")
+```
+
+## Datasets
+
+| Dataset | Description |
+| :--- | :--- |
+| `insee_admin_decoupage` | Hierarchical links between administrative levels (region, department, commune, etc.) |
+| `insee_admin_spatial` | Spatial data (`sf` objects) for each administrative level |
+| `lut_code_label` | Lookup table between administrative codes and their labels |
+
+## Raw data
+
+In addition to the processed datasets, the package ships raw INSEE files in `inst/extdata/`. These files can be accessed with `system.file()` and can be used as `sf` objects.
+
+```{r raw-data, eval = FALSE}
+path_to_extdata <- system.file("extdata", package = "insee.admin.data.2022")
+list.files(path_to_extdata)
+```
+
+## Source
+
+Raw INSEE files are shipped in `inst/extdata/`. The processed datasets in `data/` are generated from these files by the scripts in `data-raw/`.
+
+## Data Compression and Size
+
+This package contains large datasets compressed with `xz`.  
+- Total installed size: ~400 Mb  
+- To reduce local disk usage, load only needed datasets with `data("dataset_name", package = "insee.admin.data.2022")`.
+
+## Example
+
+This is a basic example which shows you how to load and explore the administrative data:
+
+```{r example}
+library(insee.admin.data.2022)
+
+# Hierarchical links between administrative levels
+head(insee_admin_decoupage)
+
+# Lookup table for codes and labels
+head(lut_code_label)
+```
+
+### Spatial data
+
+Spatial data are provided as `sf` objects. Here is a quick overview of the available layers:
+
+```{r spatial, eval = FALSE}
+# Load the spatial dataset
+data("insee_admin_spatial", package = "insee.admin.data.2022")
+
+# Explore the structure
+names(insee_admin_spatial)
+```
+
+## License
+
+MIT. See `LICENSE.md` for details.

@@ -1,0 +1,2 @@
+inst/extdata/** binary
+inst/extdata/** filter=lfs diff=lfs merge=lfs -text
